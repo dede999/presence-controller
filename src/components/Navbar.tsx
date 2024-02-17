@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Feather } from 'lucide-react'
 import NavLink from "next/link";
 import { ButtonElement } from "./ui/button";
+import NavbarLinks from "./NavbarLinks";
 
 export default function Navbar() {
   const links = [
@@ -26,19 +27,7 @@ export default function Navbar() {
         </NavLink>
       </div>
 
-      <ul className="hidden md:flex gap-x-10">
-        {links.map((link, index) => (
-          <li key={index} className="py-3">
-            <NavLink href={link.href}>{link.label}</NavLink>
-          </li>
-        ))}
-        <ButtonElement variant='outline' className='border-2 text-lg h-auto border-primary bg-primary text-white hover:text-primary transition-all duration-300 ease-in-out'>
-          Cadastre-se
-        </ButtonElement>
-        <ButtonElement variant='outline' className='border-2 text-lg h-auto border-secondary bg-secondary text-white hover:text-secondary'>
-          Entre
-        </ButtonElement>
-      </ul>
+      <NavbarLinks orientation="horizontal" isMenuOpen={isMobileMenuOpen} />
 
       <div className="md:hidden">
         <button
@@ -61,24 +50,7 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {isMobileMenuOpen && (
-          <>
-            <ul className="absolute inset-x-0 bg-white rounded-md shadow-lg border-t-teal-700">
-              <li className="p-2 mx-4 my-3 border-b border-gray-200 hover:mx-12 hover:text-teal-700 hover:font-semibold transition-all duration-300 ease-in-out">
-                <NavLink href="/">Home</NavLink>
-              </li>
-              <li className="p-2 mx-4 mb-3 border-b border-gray-200 hover:mx-12 hover:text-teal-700 hover:font-semibold transition-all duration-300 ease-in-out">
-                <NavLink href="/about">About</NavLink>
-              </li>
-              <li className="p-2 mx-4 mb-3 hover:mx-12 hover:text-teal-700 hover:font-semibold transition-all duration-300 ease-in-out">
-                <NavLink href="/contact">Contact</NavLink>
-              </li>
-              <ButtonElement variant='outline' className='mb-3 mx-4 border-2 text-lg h-auto border-teal-700 bg-teal-700 text-white hover:text-teal-700 transition-all duration-300 ease-in-out'>
-                Get Started
-              </ButtonElement>
-            </ul>
-          </>        
-        )}
+        <NavbarLinks orientation="vertical" isMenuOpen={isMobileMenuOpen} />
       </div>
     </nav>
   );
