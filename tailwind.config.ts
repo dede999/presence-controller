@@ -18,6 +18,15 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        primary: '#0f766e', // teal-700
+        secondary: '#0e7490', // indigo-700
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
